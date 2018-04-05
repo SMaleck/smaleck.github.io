@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>        
+        <!-- SCRIPTS -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+        <!-- STYLES -->
+        <link href="./css/style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <!-- MAIN VUE WRAPPER -->
+        <div id="app">
+            
+            <!-- SKILL MATRIX -->
+            <div>
+                <div v-for="skillGroup in skillGroups">
+                    <div>{{skillGroup.title}}</div>
+                    <div v-for="skill in skillGroup.items">
+
+                    </div>
+
+
+                </div>
+                    
+                </li>
+            </div>
+
+        </div>
+        <script src="./js/script.js"></script>
+    </body>    
+</html>
