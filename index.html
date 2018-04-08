@@ -37,28 +37,35 @@
                 
                 <!-- SKILL MATRIX -->
                 <div class="content-block skill-matrix">
-                    <h2>Skills</h2>
-                    <div class="skill-group-container">                            
-                        <!-- Skill Group Box -->
-                        <div v-for="skillGroup in skillGroups" class="skill-group">
-                            <h3>{{skillGroup.title}}</h3>
-        
-                            <!-- Skill Items -->
-                            <div v-for="skill in skillGroup.items" class="skill-item">                       
-                                <div>
-                                    <h4>{{skill.name}}</h4>
-                                    <div class="skill-bar">
-                                        <span class="bar-fill" v-bind:style="{ width: skill.level + '0%' }"></span>
-                                        <span class="bar-label">{{skill.level}}</span>
-                                    </div>                            
-                                </div>
-                            </div>
-                        </div>                                
+                    <div class="cb-header">
+                        <div class="cb-header-text">Skills</div>
+                        <div class="cb-header-corner">a</div>
                     </div>
-                </div>
-            </div>
+                    <div class="cb-inner-container">
 
-        </div> 
-        <!-- END VUE -->        
+                            <div class="cb-inner-content skill-group-container">                            
+                                <!-- Skill Group Box -->
+                                <div v-for="skillGroup in skillGroups" class="skill-group">
+                                    <h3>{{skillGroup.title}}</h3>
+                
+                                    <!-- Skill Items -->
+                                    <div v-for="skill in skillGroup.items" class="skill-item">                       
+                                        <div>
+                                            <h4>{{skill.name}}</h4>
+                                            <div class="skill-bar">
+                                                <span class="bar-fill" v-bind:style="{ width: skill.level + '0%' }"></span>
+                                                <span class="bar-label">{{skill.level}}</span>
+                                            </div>                            
+                                        </div>
+                                    </div>
+                                </div>                                
+                            </div>
+
+                    </div>
+                    
+                </div> <!-- END Skill Matrix -->
+
+            </div> <!-- END Container --> 
+        </div> <!-- END Vue App -->        
     </body>    
 </html>
