@@ -1,4 +1,3 @@
-
 /* -------------------- RESETS -------------------- */
 html, body, div{
   box-sizing: border-box;
@@ -8,43 +7,94 @@ html, body, div{
 }
 
 body{
-  background: rgb(13, 33, 37);
+  background: #0E0A19;
   color: #efefef;
 }
 
 a{
   text-decoration: none;
+  color: #efefef;
+  transition: all 200ms;
 }
 
 /* -------------------- LAYOUT -------------------- */
 
 .container{
-  padding: 0 10px 0 10px;
   max-width: 1024px;
   margin: auto;
+  font-family: Roboto;
+  font-size: 14px;
 }
 
+.content-block{
+  margin: 15px;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.15);
+}
 
 /* -------------------- HEADERS -------------------- */
 h1, h2, h3{
   font-variant: small-caps;
 }
 
-h4{
-  font-size: 16px;
-  margin: 15px 0 3px 15px;
+h2{
+  margin: 0;
+  padding: 8px 0;
+  box-shadow: 0 0 6px rgba(71, 23, 246, 0.5);
+  text-shadow: 1px 1px #A33ACB;
+  text-indent: 15px;
 }
+
+h3{
+  font-kerning: 1px;
+  width: 100%;
+  border-bottom: 1px solid;
+}
+
+h4{
+  font-size: 14px;
+  margin: 15px 0 3px 15px;
+  font-weight: lighter;
+  font-kerning: 1px;
+}
+
+/* -------------------- TOP BAR -------------------- */
+.top-bar{
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 20px;
+  margin: 0;
+}
+
+.top-bar .inner{
+  max-width: 1024px;
+  margin: auto;
+}
+
+.top-bar .back-button{
+  float: right;
+}
+
+.top-bar .back-button:hover{
+  text-shadow: 2px 2px #A33ACB;
+}
+
+/* -------------------- HEADER BLOCK -------------------- */
+
 
 
 /* -------------------- SKILL MATRIX -------------------- */
 .skill-matrix{
-  
+  box-shadow: 0 3px 6px rgba(71, 23, 246, 0.16), 0 3px 6px rgba(71, 23, 246, 0.23);
 }
 
 .skill-group-container{
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  padding: 10px;
 }
 
 .skill-group{
@@ -54,7 +104,7 @@ h4{
 .skill-bar { 
 	height: 20px;
 	position: relative;
-	background: #555;
+	background: #e7dfdd;
 	-moz-border-radius: 1px;
 	-webkit-border-radius: 1px;
 	border-radius: 2px;
@@ -67,7 +117,7 @@ h4{
   float: left;
   height: 100%;
   border-radius: 2px;
-  background-color: rgb(81, 216, 250);
+  background-color: #4483CE;
   box-shadow: 
     inset 0 2px 9px  rgba(255,255,255,0.3),
     inset 0 -2px 6px rgba(0,0,0,0.4);
@@ -76,10 +126,13 @@ h4{
   overflow: hidden;  
 }
 
-.skill-bar .bar-label{
+.skill-bar .bar-label{ 
+  display: none;
   position: relative;  
   float: right;
   margin: -3px 5px;
   height: 100%;
   transform: skewX(-20deg);
+  color: #FBCD00;
+  font-size: 18px;
 }

@@ -9,44 +9,53 @@
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="./js/script.js"></script>
 
+        <!-- FONTS -->
+        <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
+
         <!-- STYLES -->
         <link href="./css/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <!-- MAIN VUE WRAPPER -->
-        <div id="app" class="container">
+        <div id="app">
 
-            <!-- HEADER -->
-            <div class="header">
-                <h1>Sebastian Maleck</h1>
-            </div>
-
-            
-            <!-- SKILL MATRIX -->
-            <div class="skill-matrix">
-                <h2>Skills</h2>
-                <div class="skill-group-container">                            
-                    <!-- Skill Group Box -->
-                    <div v-for="skillGroup in skillGroups" class="skill-group">
-                        <h3>{{skillGroup.title}}</h3>
-    
-                        <!-- Skill Items -->
-                        <div v-for="skill in skillGroup.items" class="skill-item">                       
-                            <div>
-                                <h4>{{skill.name}}</h4>
-                                <div class="skill-bar">
-                                    <span class="bar-fill" v-bind:style="{ width: skill.level + '0%' }"></span>
-                                    <span class="bar-label">{{skill.level}}</span>
-                                </div>                            
-                            </div>
-                        </div>
-                    </div>                                
+            <!-- TOP BAR -->
+            <div class="top-bar">
+                <div class="inner">
+                    <a href="https://github.com/SMaleck/smaleck.github.io" class="back-button">BACK</a>
                 </div>
             </div>
 
-            <!-- FOOTER -->
-            <div class="footer">
-
+            <!-- Content Wrapper -->
+            <div class="container">
+                
+                <!-- HEADER -->
+                <div class="content-block header">
+                    <h1>Sebastian Maleck</h1>                
+                </div>
+    
+                
+                <!-- SKILL MATRIX -->
+                <div class="content-block skill-matrix">
+                    <h2>Skills</h2>
+                    <div class="skill-group-container">                            
+                        <!-- Skill Group Box -->
+                        <div v-for="skillGroup in skillGroups" class="skill-group">
+                            <h3>{{skillGroup.title}}</h3>
+        
+                            <!-- Skill Items -->
+                            <div v-for="skill in skillGroup.items" class="skill-item">                       
+                                <div>
+                                    <h4>{{skill.name}}</h4>
+                                    <div class="skill-bar">
+                                        <span class="bar-fill" v-bind:style="{ width: skill.level + '0%' }"></span>
+                                        <span class="bar-label">{{skill.level}}</span>
+                                    </div>                            
+                                </div>
+                            </div>
+                        </div>                                
+                    </div>
+                </div>
             </div>
 
         </div> 
