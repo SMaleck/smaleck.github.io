@@ -24,6 +24,7 @@ a{
   margin: auto;
   font-family: Roboto;
   font-size: 14px;
+  padding-top: 30px;
 }
 
 .content-block{
@@ -60,12 +61,13 @@ h4{
 
 /* -------------------- TOP BAR -------------------- */
 .top-bar{
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
   position: absolute;
   top: 0;
   width: 100%;
-  height: 20px;
+  height: 30px;
   margin: 0;
+  box-shadow: 0 0 rgba(71, 23, 246, 0.16), 0 3px 6px rgba(71, 23, 246, 0.23);
 }
 
 .top-bar .inner{
@@ -73,12 +75,20 @@ h4{
   margin: auto;
 }
 
-.top-bar .back-button{
-  float: right;
+.top-bar .inner a{
+  display: block;
+  line-height: 30px;
+  padding: 0 5px;
+  font-weight: bold;
+  text-shadow: 1px 1px #A33ACB;
 }
 
-.top-bar .back-button:hover{
-  text-shadow: 2px 2px #A33ACB;
+.top-bar .inner a:hover{
+  text-shadow: 3px 3px #A33ACB;
+}
+
+.top-bar .back-button{
+  float: right;
 }
 
 /* -------------------- HEADER BLOCK -------------------- */
