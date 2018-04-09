@@ -27,29 +27,25 @@ a{
 }
 
 .content-block{
-  margin: 15px;
-  border-radius: 1px;
+  margin: 15px;  
 }
 
 .content-block .cb-inner-container{
   padding: 2px 2px 0 2px;
-  background: linear-gradient(to bottom, rgba(68, 131, 206, 1) 20%, rgba(0,0,0,0) 100%);
-  border-radius: 1px;
+  background: linear-gradient(to bottom, rgba(68, 131, 206, 1) 20%, rgba(0,0,0,0) 100%);  
   box-shadow: 0 3px 6px rgba(71, 23, 246, 0.16), 0 3px 6px rgba(71, 23, 246, 0.23);
 }
 
 .content-block .cb-inner-content{
   background: #0E0A19;
   width: 100%;
-  height: 100%;
-  border-radius: 1px;
+  height: 100%;  
 }
 
 .cb-header{
   font-weight: bolder;
   font-variant: small-caps;
-  font-size: 18px;
-  border-radius: 1px 0 0 0;
+  font-size: 18px;  
   line-height: 25px;
 }
 
@@ -64,7 +60,7 @@ a{
 .cb-header .cb-header-text{
   color: #FBCD00;
   padding: 0 30px;
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.3);  
 }
 
 .cb-header .cb-header-corner{
