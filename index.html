@@ -66,39 +66,39 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- End Header -->
+            <!-- END Class Info -->
 
 
-        <!-- SKILL MATRIX -->
-        <div class="content-block skill-matrix">
-            <div class="cb-header">
-                <div class="cb-header-text">Skills</div>
-                <div class="cb-header-corner-right">a</div>
-            </div>
-            <div class="cb-inner-container">
+            <!-- SKILL MATRIX -->
+            <div class="content-block skill-matrix">
+                <div class="cb-header">
+                    <div class="cb-header-text">Skills</div>
+                    <div class="cb-header-corner-right">a</div>
+                </div>
+                <div class="cb-inner-container">
 
-                <div class="cb-inner-content skill-group-container">
-                    <!-- Skill Group Box -->
-                    <div v-for="skillGroup in characterModel.skillGroups" class="skill-group">
-                        <h3>{{skillGroup.title}}</h3>
+                    <div class="cb-inner-content skill-group-container">
+                        <!-- Skill Group Box -->
+                        <div v-for="skillGroup in characterModel.skillGroups" class="skill-group">
+                            <h3>{{skillGroup.title}}</h3>
 
-                        <!-- Skill Items -->
-                        <div v-for="skill in skillGroup.items" class="skill-item">
-                            <div>
-                                <h4>{{skill.name}}</h4>
-                                <div class="skill-bar">
-                                    <span class="bar-fill" v-bind:style="{ width: skill.level + '0%' }"></span>
-                                    <span class="bar-label">{{skill.level}}</span>
+                            <!-- Skill Items -->
+                            <div v-for="skill in skillGroup.items" class="skill-item">
+                                <div>
+                                    <h4>{{skill.name}}</h4>
+                                    <div class="skill-bar">
+                                        <span class="bar-fill" v-bind:style="{ width: skill.level + '0%' }"></span>
+                                        <span class="bar-label">{{skill.level}}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- END Skill Matrix -->
+            <!-- END Skill Matrix -->
 
+        </div>
     </div>
     <!-- END Container -->
     </div>
