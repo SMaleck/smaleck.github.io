@@ -2,4 +2,7 @@
 
 [Start](https://smaleck.github.io)
 
-Uses VueJS.
+## **ToDo**
+- Add better avatar image
+- Check SEO meta tags if needed
+- Add 3rd Section

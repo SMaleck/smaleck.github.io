@@ -25,12 +25,13 @@
         <!-- TOP BAR -->
         <div class="top-bar">
             <div class="inner">
+                <a href="https://www.linkedin.com/in/sebastian-maleck-a578869b/" class="icon linkedin"></a>
                 <a href="https://github.com/SMaleck/smaleck.github.io" class="back-button">BACK</a>
             </div>
         </div>
 
         <!-- Content Wrapper -->
-        <div class="container">
+        <div class="container content">
 
             <!-- CLASS INFO -->
             <div class="content-block class-info">
@@ -61,7 +62,8 @@
                                     <span class="label">{{stat.label}}</span>
                                     <br/>
                                     <span class="value">{{stat.value}}</span>
-                                </div>
+                                    {{delayedCount(stat)}}
+                                </div>                                
                             </div>
                         </div>
                     </div>
@@ -86,10 +88,10 @@
                             <!-- Skill Items -->
                             <div v-for="skill in skillGroup.items" class="skill-item">
                                 <div>
-                                    <h4>{{skill.name}}</h4>
+                                    <h4>{{skill.label}}</h4>
                                     <div class="skill-bar">
-                                        <span class="bar-fill" v-bind:style="{ width: skill.level + '0%' }"></span>
-                                        <span class="bar-label">{{skill.level}}</span>
+                                        <span class="bar-fill" v-bind:style="{ width: skill.value + '0%' }"></span>
+                                        {{delayedUpdate(skill)}}
                                     </div>
                                 </div>
                             </div>
