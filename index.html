@@ -1,71 +1,110 @@
 <!DOCTYPE html>
 <html>
-    <head>        
-        <title></title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- SCRIPTS -->
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src="./js/script.js"></script>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- FONTS -->
-        <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/script.js"></script>
 
-        <!-- STYLES -->
-        <link href="./css/style.css" rel="stylesheet" type="text/css">
-    </head>
-    <body>
-        <!-- MAIN VUE WRAPPER -->
-        <div id="app">
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
 
-            <!-- TOP BAR -->
-            <div class="top-bar">
-                <div class="inner">
-                    <a href="https://github.com/SMaleck/smaleck.github.io" class="back-button">BACK</a>
-                </div>
+    <!-- STYLES -->
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!-- MAIN VUE WRAPPER -->
+    <div id="app">
+
+        <!-- TOP BAR -->
+        <div class="top-bar">
+            <div class="inner">
+                <a href="https://github.com/SMaleck/smaleck.github.io" class="back-button">BACK</a>
             </div>
+        </div>
 
-            <!-- Content Wrapper -->
-            <div class="container">
-                
-                <!-- HEADER -->
-                <div class="content-block header">
-                    <h1>Sebastian Maleck</h1>                
+        <!-- Content Wrapper -->
+        <div class="container">
+
+            <!-- HEADER -->
+            <div class="content-block class-info">
+                <div class="cb-header">
+                    <div class="cb-header-corner-left">a</div>
+                    <div class="cb-header-text">{{characterModel.name}}</div>
+                    <div class="cb-header-corner-right">a</div>
                 </div>
-    
-                
-                <!-- SKILL MATRIX -->
-                <div class="content-block skill-matrix">
-                    <div class="cb-header">
-                        <div class="cb-header-text">Skills</div>
-                        <div class="cb-header-corner">a</div>
-                    </div>
-                    <div class="cb-inner-container">
 
-                            <div class="cb-inner-content skill-group-container">                            
-                                <!-- Skill Group Box -->
-                                <div v-for="skillGroup in skillGroups" class="skill-group">
-                                    <h3>{{skillGroup.title}}</h3>
-                
-                                    <!-- Skill Items -->
-                                    <div v-for="skill in skillGroup.items" class="skill-item">                       
-                                        <div>
-                                            <h4>{{skill.name}}</h4>
-                                            <div class="skill-bar">
-                                                <span class="bar-fill" v-bind:style="{ width: skill.level + '0%' }"></span>
-                                                <span class="bar-label">{{skill.level}}</span>
-                                            </div>                            
-                                        </div>
-                                    </div>
-                                </div>                                
+                <div class="cb-inner-container">
+                    <div class="cb-inner-content">
+                        <div class="portrait-wrapper">
+                            <div class="portrait"></div>
+                        </div>
+
+                        <!-- Detail Wrapper -->
+                        <div class="details-wrapper">
+                            <div class="info-row details">
+                                <div v-for="detail in characterModel.details" class="detail-item">
+                                    <span class="label">{{detail.label}}</span>
+                                    <br/>
+                                    <span class="value">{{detail.value}}</span>
+                                </div>
                             </div>
 
+                            <div class="info-row stats">
+                                <div v-for="stat in characterModel.stats" class="stat-item">
+                                    <span class="label">{{stat.label}}</span>
+                                    <br/>
+                                    <span class="value">{{stat.value}}</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                </div> <!-- END Skill Matrix -->
+                </div>
+            </div>
+        </div>
+        <!-- End Header -->
 
-            </div> <!-- END Container --> 
-        </div> <!-- END Vue App -->        
-    </body>    
+
+        <!-- SKILL MATRIX -->
+        <div class="content-block skill-matrix">
+            <div class="cb-header">
+                <div class="cb-header-text">Skills</div>
+                <div class="cb-header-corner-right">a</div>
+            </div>
+            <div class="cb-inner-container">
+
+                <div class="cb-inner-content skill-group-container">
+                    <!-- Skill Group Box -->
+                    <div v-for="skillGroup in characterModel.skillGroups" class="skill-group">
+                        <h3>{{skillGroup.title}}</h3>
+
+                        <!-- Skill Items -->
+                        <div v-for="skill in skillGroup.items" class="skill-item">
+                            <div>
+                                <h4>{{skill.name}}</h4>
+                                <div class="skill-bar">
+                                    <span class="bar-fill" v-bind:style="{ width: skill.level + '0%' }"></span>
+                                    <span class="bar-label">{{skill.level}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- END Skill Matrix -->
+
+    </div>
+    <!-- END Container -->
+    </div>
+    <!-- END Vue App -->
+</body>
+
 </html>
