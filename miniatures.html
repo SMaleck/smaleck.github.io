@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sebastian Maleck</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- SCRIPTS -->
+    <script src="./lib/vue.min.js"></script>
+    <script src="./js/miniatures.js?v1"></script>
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
+
+    <!-- STYLES -->
+    <link href="./css/style.css?v1" rel="stylesheet" type="text/css">
+    <link href="./css/miniatures.css?v1" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!-- MAIN VUE WRAPPER -->
+    <div id="app">
+
+        <!-- TOP BAR -->
+        <div class="top-bar">
+            <div class="inner">
+                <a href="https://www.linkedin.com/in/sebastian-maleck-a578869b/" class="icon linkedin"></a>
+                <a href="https://github.com/SMaleck/smaleck.github.io" class="back-button">BACK</a>
+            </div>
+        </div>
+
+        <!-- Content Wrapper -->
+        <div class="container content">
+
+            <div class="content-block">
+                <div v-for="miniature in crafting.miniatures" class="miniature-entry">
+                    <div class="miniature-details-block">
+                        <div class="miniature-title">{{miniature.title}}</div>
+                        <div class="miniature-created-at">{{miniature.title}}</div>
+                        <div class="miniature-description">{{miniature.title}}</div>
+                    </div>
+                
+                    <div v-for="imgSrc in miniature.images" class="miniature-images-block">
+                        <img :src="imgSrc" class="miniature-image">
+                    </div>            
+                </div>
+            </div>
+               
+        </div> <!-- END Content Wrapper  -->
+    </div> <!-- END Vue App -->
+</body>
+
+</html>
