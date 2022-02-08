@@ -43,12 +43,16 @@
             <div v-for="category in collection" class="miniatures-category">
                 
                 <div class="content-block">
-                    <h2 class="category-title">{{category.category}}</h2>
+                    <h2 class="category-title">
+                        <a :id="category.category" :href="'#' + category.category">{{category.category}}</a>
+                    </h2>
                     
                     <!-- ENTRY -->
                     <div v-for="miniature in category.items" class="miniature-entry">
                         <div class="miniature-details-block">
-                            <div class="miniature-title">{{miniature.name}}</div>
+                            <div class="miniature-title">
+                                <a :id="category.category + '-' + miniature.name" :href="'#' + category.category + '-' + miniature.name">{{miniature.name}}</a>
+                            </div>
                             <div class="miniature-created-at">{{miniature.createdAt}}</div>
                         </div>
 
