@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Sebastian Maleck</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>I did this</title>
 
     <!-- SCRIPTS -->
     <script src="./lib/vue.min.js"></script>
@@ -26,30 +27,43 @@
         <!-- TOP BAR -->
         <div class="top-bar">
             <div class="inner">
-                <a href="https://www.linkedin.com/in/sebastian-maleck-a578869b/" class="icon linkedin"></a>
-                <a href="https://github.com/SMaleck/smaleck.github.io" class="back-button">BACK</a>
+                <div class="menu-bar-button">
+                    <a href="?">ALL</a>
+                </div>
+                <div v-for="category in craftingData" class="menu-bar-button">
+                    <a :href="'?category=' + category.category">{{category.category}}</a>
+                </div>
             </div>
         </div>
 
         <!-- Content Wrapper -->
         <div class="container content">
 
-            <div v-for="category in crafting" class="miniatures-category">
-
+            <!-- Category Wrapper -->
+            <div v-for="category in collection" class="miniatures-category">
+                
                 <div class="content-block">
+                    <h2 class="category-title">{{category.category}}</h2>
+                    
+                    <!-- ENTRY -->
                     <div v-for="miniature in category.items" class="miniature-entry">
                         <div class="miniature-details-block">
                             <div class="miniature-title">{{miniature.name}}</div>
                             <div class="miniature-created-at">{{miniature.createdAt}}</div>
                         </div>
-                    
-                        <div v-for="imgSrc in miniature.images" class="miniature-images-block">
-                            <img :src="imgSrc" class="miniature-image">
-                        </div>            
-                    </div>
-                </div>            
 
+                        <!-- ENTRY IMAGES -->
+                        <div class="miniature-images-block">
+                            <div v-for="imgSrc in miniature.images" class="miniature-image card-1">
+                                <a :href="imgSrc">
+                                    <img :src="imgSrc">
+                                </a>
+                            </div>
+                        </div><!-- END IMAGES -->
+                    </div>
+                </div>
             </div> <!-- END CATEGORY  -->
+
         </div> <!-- END Content Wrapper  -->
     </div> <!-- END Vue App -->
 </body>

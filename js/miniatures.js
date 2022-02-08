@@ -1,10 +1,24 @@
+
 (function (global) {
 
-    const crafting = JSON.parse(craftingProjectsJson);
+    const craftingData = JSON.parse(craftingProjectsJson);
+
+    let currentCategory;
+    let currentCollection = craftingData;
 
     function start() {
-        // ToDo Get page from url
-        // ToDo Take sub-array
+
+        const params = new URLSearchParams(window.location.search);
+        currentCategory = params.get("category");
+
+        if (currentCategory) {
+            for (const collection of craftingData) {
+                if (collection.category === currentCategory) {
+                    currentCollection = [collection];
+                    break;
+                }
+            }
+        }
 
         initVue();
     }
@@ -13,7 +27,8 @@
         new Vue({
             el: '#app',
             data: {
-                crafting
+                craftingData: craftingData,
+                collection: currentCollection
             },
         });
     }

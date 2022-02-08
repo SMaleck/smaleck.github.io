@@ -34,6 +34,7 @@ function GetFilePaths(directory) {
 function parseFileEntry(directory, file) {
     var meta = parseFileName(file.name);
     var cleanedDirectory = directory.substring(1);
+
     return {
         name: meta.name,
         createdAt: meta.createdAt,
@@ -50,30 +51,32 @@ function parseFileName(fileName) {
     }
 
     var name = split[namingRules.nameIndex].replace(namingRules.removeChar, " ");
+    var rawCreatedAt = split[namingRules.createdAtIndex];
+    var createdAt = [rawCreatedAt.substr(0, 4), rawCreatedAt.substr(4, 2), rawCreatedAt.substr(6)].join('-');
 
     return {
-        createdAt: split[namingRules.createdAtIndex],
-        name: name
+        name: name,
+        createdAt: createdAt
     }
 }
 
 function groupFileEntriesByCategory(fileEntries) {
-    var group = [];
 
-    fileEntries.reduce((acc, value) => {
-        // Group initialization
-        if (group.indexOf(acc) < 0) {
-            acc = { ...acc, category: value.category, items: [] };
-            group.push(acc);
-        }
-
-        // Grouping
-        acc.items.push(value);
-
+    var grouping = fileEntries.reduce((acc, value) => {
+        acc[value.category] = acc[value.category] || [];
+        acc[value.category].push(value);
         return acc;
     }, {});
 
-    return group;
+    var cleanedGrouping = [];
+    for (const [key, value] of Object.entries(grouping)) {
+        cleanedGrouping.push({
+            category: key,
+            items: value
+        });
+    }
+
+    return cleanedGrouping;
 }
 
 function aggregateFilesByName(groupedByCategory) {
@@ -101,7 +104,7 @@ function aggregateFilesByName(groupedByCategory) {
     return aggregated;
 }
 
-function generateCode(json){
+function generateCode(json) {
     var code = `const craftingProjectsJson = '${json}';`;
     console.log(`Writing to ${codeFilePath}`);
     fs.writeFileSync(codeFilePath, code);
