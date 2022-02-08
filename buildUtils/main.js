@@ -6,7 +6,7 @@ const codeFilePath = '../js/craftingProjects.js';
 
 const namingRules = {
     sectionSplitChar: '_',
-    removeChar: '-',
+    removeChar: '/-/g',
     expectedSectionCount: 3,
     createdAtIndex: 0,
     nameIndex: 1,
@@ -50,7 +50,7 @@ function parseFileName(fileName) {
         throw `Filename section count invalid! Expected: ${namingRules.expectedSectionCount} | Actual: ${split.length}`;
     }
 
-    var name = split[namingRules.nameIndex].replace(namingRules.removeChar, " ");
+    var name = split[namingRules.nameIndex].replace(/-/g, " ");
     var rawCreatedAt = split[namingRules.createdAtIndex];
     var createdAt = [rawCreatedAt.substr(0, 4), rawCreatedAt.substr(4, 2), rawCreatedAt.substr(6)].join('-');
 
