@@ -25,6 +25,10 @@
   font-size: 14px;
 }
 
+.miniature-entry .miniature-details-block .miniature-description:empty{
+  display: none;
+}
+
 .miniature-entry .miniature-images-block{
   width: 100%
 }
