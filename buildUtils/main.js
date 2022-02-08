@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const basePath = '../image/crafting/';
+const codeFilePath = '../js/craftingProjects.js';
 
 const namingRules = {
     sectionSplitChar: '_',
@@ -14,11 +15,6 @@ const namingRules = {
 
 function GetFilePaths(directory) {
     const entries = fs.readdirSync(directory, { withFileTypes: true });
-
-    // Get files within the current directory and add a path key to the file objects
-    // const files = entries
-    //     .filter(file => !file.isDirectory())
-    //     .map(file => ({ ...file, path: path + file.name }));
 
     const files = entries
         .filter(entry => !entry.isDirectory())
@@ -36,10 +32,14 @@ function GetFilePaths(directory) {
 }
 
 function parseFileEntry(directory, file) {
+    var meta = parseFileName(file.name);
+    var cleanedDirectory = directory.substring(1);
     return {
-        meta: parseFileName(file.name),
+        name: meta.name,
+        createdAt: meta.createdAt,
         fileName: file.name,
-        path: directory + file.name
+        path: cleanedDirectory + file.name,
+        category: path.basename(directory)
     };
 }
 
@@ -57,5 +57,68 @@ function parseFileName(fileName) {
     }
 }
 
+function groupFileEntriesByCategory(fileEntries) {
+    var group = [];
+
+    fileEntries.reduce((acc, value) => {
+        // Group initialization
+        if (group.indexOf(acc) < 0) {
+            acc = { ...acc, category: value.category, items: [] };
+            group.push(acc);
+        }
+
+        // Grouping
+        acc.items.push(value);
+
+        return acc;
+    }, {});
+
+    return group;
+}
+
+function aggregateFilesByName(groupedByCategory) {
+    var aggregated = [];
+    for (const category of groupedByCategory) {
+        // Find unique Names, those define projects
+        var uniqueNames = category.items
+            .map(e => e.name)
+            .filter((val, ind, arr) => arr.indexOf(val) === ind);
+
+        // Aggregate all files belonging to a project
+        var aggregatedCategory = { ...category, items: [] };
+        for (const name of uniqueNames) {
+            var images = category.items.filter(val => val.name === name).map(val => val.path);
+
+            var uniqueEntry = category.items.find(val => val.name === name);
+            uniqueEntry = { ...uniqueEntry, images: images };
+
+            aggregatedCategory.items.push(uniqueEntry);
+        }
+
+        aggregated.push(aggregatedCategory);
+    }
+
+    return aggregated;
+}
+
+function generateCode(json){
+    var code = `const craftingProjectsJson = '${json}';`;
+    console.log(`Writing to ${codeFilePath}`);
+    fs.writeFileSync(codeFilePath, code);
+}
+
+console.log("Collecting...");
 var filePaths = GetFilePaths(basePath);
-console.log(filePaths);
+var grouped = groupFileEntriesByCategory(filePaths);
+var aggregated = aggregateFilesByName(grouped);
+var json = JSON.stringify(aggregated);
+
+console.log("JSON Result");
+console.log("------------------------------------------");
+console.log(json);
+console.log("------------------------------------------");
+
+console.log("Generating code...");
+generateCode(json);
+
+console.log("\nDONE!");

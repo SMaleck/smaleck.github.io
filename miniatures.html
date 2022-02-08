@@ -8,6 +8,7 @@
 
     <!-- SCRIPTS -->
     <script src="./lib/vue.min.js"></script>
+    <script src="./js/craftingProjects.js?v1"></script>
     <script src="./js/miniatures.js?v1"></script>
 
     <!-- FONTS -->
@@ -33,20 +34,22 @@
         <!-- Content Wrapper -->
         <div class="container content">
 
-            <div class="content-block">
-                <div v-for="miniature in crafting.miniatures" class="miniature-entry">
-                    <div class="miniature-details-block">
-                        <div class="miniature-title">{{miniature.title}}</div>
-                        <div class="miniature-created-at">{{miniature.title}}</div>
-                        <div class="miniature-description">{{miniature.title}}</div>
+            <div v-for="category in crafting" class="miniatures-category">
+
+                <div class="content-block">
+                    <div v-for="miniature in category.items" class="miniature-entry">
+                        <div class="miniature-details-block">
+                            <div class="miniature-title">{{miniature.name}}</div>
+                            <div class="miniature-created-at">{{miniature.createdAt}}</div>
+                        </div>
+                    
+                        <div v-for="imgSrc in miniature.images" class="miniature-images-block">
+                            <img :src="imgSrc" class="miniature-image">
+                        </div>            
                     </div>
-                
-                    <div v-for="imgSrc in miniature.images" class="miniature-images-block">
-                        <img :src="imgSrc" class="miniature-image">
-                    </div>            
-                </div>
-            </div>
-               
+                </div>            
+
+            </div> <!-- END CATEGORY  -->
         </div> <!-- END Content Wrapper  -->
     </div> <!-- END Vue App -->
 </body>
