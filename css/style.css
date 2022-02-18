@@ -20,7 +20,7 @@ a{
 /* -------------------- LAYOUT -------------------- */
 
 .container{
-  max-width: 1024px;
+  max-width: 720px;
   margin: auto;
   font-size: 14px;
 }

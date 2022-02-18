@@ -71,6 +71,14 @@
   font-size: 0;
 }
 
+.miniature-entry .miniature-images-block .miniature-image-container{
+  margin: 0 0 20px 0;
+}
+
+.miniature-entry .miniature-images-block .miniature-image-container:last-child{
+  margin: 0;
+}
+
 .miniature-entry .miniature-images-block .miniature-image{
   width: 100%;
   margin: 0px 0px 10px 0px;

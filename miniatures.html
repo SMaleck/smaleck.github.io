@@ -9,15 +9,15 @@
 
     <!-- SCRIPTS -->
     <script src="./lib/vue.min.js"></script>
-    <script src="./js/craftingProjects.js?v1"></script>
-    <script src="./js/miniatures.js?v1"></script>
+    <script src="./js/craftingProjects.js?v2"></script>
+    <script src="./js/miniatures.js?v2"></script>
 
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
 
     <!-- STYLES -->
-    <link href="./css/style.css?v1" rel="stylesheet" type="text/css">
-    <link href="./css/miniatures.css?v1" rel="stylesheet" type="text/css">
+    <link href="./css/style.css?v2" rel="stylesheet" type="text/css">
+    <link href="./css/miniatures.css?v2" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -58,10 +58,12 @@
 
                         <!-- ENTRY IMAGES -->
                         <div class="miniature-images-block">
-                            <div v-for="imgSrc in miniature.images" class="miniature-image card-1">
-                                <a :href="imgSrc">
-                                    <img :src="imgSrc">
-                                </a>
+                            <div v-for="imgSrc in miniature.images" class="miniature-image-container">
+                                <div class="miniature-image card-1">
+                                    <a :href="imgSrc">
+                                        <img :src="imgSrc">
+                                    </a>
+                                </div>
                             </div>
                         </div><!-- END IMAGES -->
                     </div>
