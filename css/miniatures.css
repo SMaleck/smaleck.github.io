@@ -16,6 +16,10 @@
   font-size: 32px;
 }
 
+.container.content{
+  padding-top: 65px;
+}
+
 /* -------------------- MATERIAL -------------------- */
 .card-1 {
   display: block;
@@ -31,6 +35,8 @@
 /* -------------------- ITEMS -------------------- */
 .miniature-entry{
   padding: 30px 0px; 
+  max-width: 500px;
+  margin: auto;
 }
 
 .miniature-entry .miniature-details-block{
