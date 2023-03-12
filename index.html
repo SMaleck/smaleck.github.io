@@ -8,7 +8,7 @@
 
     <!-- SCRIPTS -->
     <script src="./lib/vue.min.js"></script>
-    <script src="./js/index.js?v2"></script>
+    <script src="./js/profile.js?v1"></script>
 
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
@@ -25,89 +25,27 @@
         <!-- MAIN NAVBAR -->
         <div class="navbar navbar-main">
             <div class="inner">
-                <a href="./index.html">Profile</a>
+                <a href="./index.html" class="selected">Profile</a>
                 <a href="./miniatures.html">Miniatures</a>
-                <a href="https://github.com/SMaleck/smaleck.github.io">GitHub</a>
+                <a href="https://github.com/SMaleck">GitHub</a>
                 <a href="https://www.linkedin.com/in/sebastian-maleck-a578869b/" class="icon linkedin"></a>        
             </div>
         </div>
 
-        <!-- Content Wrapper -->
-        <div class="container content">
-
-            <!-- CLASS INFO -->
-            <div class="content-block class-info">
-                <div class="cb-header">
-                    <div class="cb-header-corner-left">a</div>
-                    <div class="cb-header-text">{{characterModel.name}}</div>
-                    <div class="cb-header-corner-right">a</div>
+        <div id="profile" class="container content">
+            <div id="title" class="content-block">
+                
+                <div id="portrait">
+                    <div id="horizontal-line"></div>
+                    <div id="profile-img"></div>                
                 </div>
 
-                <div class="cb-inner-container">
-                    <div class="cb-inner-content">
-                        <div class="portrait-wrapper">
-                            <div class="portrait"></div>
-                        </div>
-
-                        <!-- Detail Wrapper -->
-                        <div class="details-wrapper">
-                            <div class="info-row details">
-                                <div v-for="detail in characterModel.details" class="detail-item">
-                                    <span class="label">{{detail.label}}</span>
-                                    <br/>
-                                    <span class="value">{{detail.value}}</span>
-                                </div>
-                            </div>
-
-                            <div class="info-row stats">
-                                <div v-for="stat in characterModel.stats" class="stat-item">
-                                    <span class="label">{{stat.label}}</span>
-                                    <br/>
-                                    <span class="value">{{stat.value}}</span>
-                                    {{delayedCount(stat)}}
-                                </div>                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div id="intro-text">
+                    I am a Unity developer with {{characterModel.details.totalXPYears}} years of professional experience, and {{new Date().getFullYear() - 2018}} years of Unity experience.
+                </div>           
             </div>
-            <!-- END Class Info -->
 
-
-            <!-- SKILL MATRIX -->
-            <div class="content-block skill-matrix">
-                <div class="cb-header">
-                    <div class="cb-header-text">Skills</div>
-                    <div class="cb-header-corner-right">a</div>
-                </div>
-                <div class="cb-inner-container">
-
-                    <div class="cb-inner-content skill-group-container">
-                        <!-- Skill Group Box -->
-                        <div v-for="skillGroup in characterModel.skillGroups" class="skill-group">
-                            <h3>{{skillGroup.title}}</h3>
-
-                            <!-- Skill Items -->
-                            <div v-for="skill in skillGroup.items" class="skill-item">
-                                <div>
-                                    <h4>{{skill.label}}</h4>
-                                    <div class="skill-bar">
-                                        <span class="bar-fill" v-bind:style="{ width: skill.value + '0%' }"></span>
-                                        {{delayedUpdate(skill)}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- END Skill Matrix -->
-
-        </div>
-    </div>
-    <!-- END Container -->
-    </div>
-    <!-- END Vue App -->
+        </div>  <!-- END Main Container -->    
+    </div> <!-- END Vue App -->    
 </body>
-
 </html>

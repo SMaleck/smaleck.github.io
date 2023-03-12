@@ -1,173 +1,33 @@
-/* -------------------- HEADER BLOCK -------------------- */
+#profile.container.content {
+  padding-top: 65px;
+}
 
-.class-info .cb-header{
-  text-align: center;
+#title.container.content {
   margin: auto;
-  font-size: 24px;
+  display: block;
+  font-size: 20px;
 }
 
-.class-info .cb-inner-content{
-  display: flex;
-  justify-content: flex-start;
-  align-content: flex-start;
-  flex-wrap: wrap;
+#portrait {
+  margin: auto;
+  margin-top: 80px;
 }
 
-.class-info .portrait-wrapper{
-  padding: 0 3px 0 3px;
-  width: 150px;
-  height: 150px;
-  background: linear-gradient(to bottom, rgba(68, 131, 206, 1) 20%, rgba(0,0,0,0) 100%);  
-}
-
-.class-info .portrait{
-  background-image: url("../image/Headshot_2_SMaleck_2017-05-04_Resized.jpg");
+#portrait #profile-img {
+  background-image: url("../image/profile_portrait.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+#portrait #horizontal-line {
   width: 100%;
-  height: 100%;      
-  box-shadow: 0 0 6px rgba(71, 23, 246, 0.23);
-}
-
-.class-info .details-wrapper{  
-  flex-grow: 1;  
-}
-
-/* DETAILS */
-.class-info .info-row .detail-item{
-  display: inline-block;  
-  padding: 20px;
-}
-
-.class-info .info-row .label{
-  text-align: left;
-  font-weight: bold;  
-  color: #FBCD00;
-  text-transform: uppercase;
-}
-
-.class-info .info-row .value{
-  text-align: left;
-  color: #efefef;
-  font-family: monospace;
-  text-shadow: 1px 1px #4483CE;
-  padding-left: 10px;
-}
-
-/* STATS */
-.class-info .stats{
-  padding: 18px 0 0 0;
-}
-
-.class-info .stats .stat-item{  
-  border-right: 2px solid #A33ACB;  
-  display: inline-block;
-  width: 110px;
-}
-
-.class-info .stats .stat-item:last-child{
-  border-right: none;   
-}
-
-.class-info .stats .stat-item{  
-  text-align: center;  
-}
-
-.class-info .stats .value{
-  font-size: 24px;
-  text-align: center;
-  padding: 0;
-}
-
-
-@media screen and (max-width: 625px) {
-  .class-info .portrait-wrapper,
-  .class-info .portrait,
-  .class-info .details-wrapper{
-    display: block;
-    margin: auto;
-  }
-
-  .class-info .details-wrapper{
-    text-align: center;
-  }
-
-  .class-info .details .detail-item{
-    text-align: left;
-  }
-
-  .class-info .stats{
-    padding: 0 0 15px 0;
-  }
-
-  .class-info .stats .stat-item{
-    margin: 20px 0 0 0;
-  }
-}
-
-@media screen and (max-width: 473px) {
-
-  .class-info .stats .stat-item:nth-child(3){
-    border-right: none;  
-  }
-}
-
-@media screen and (max-width: 367px) {
-
-  .class-info .stats .stat-item:nth-child(2){
-    border-right: none;  
-  }
-  .class-info .stats .stat-item:nth-child(3){
-    border-right: 2px solid #A33ACB;   
-  }
-}
-
-/* -------------------- SKILL MATRIX -------------------- */
-
-.skill-group-container{
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding: 0 10px;
-}
-
-.skill-group{
-  margin: 25px 0;
-  width: 300px;
-}
-
-.skill-bar { 
-	height: 20px;
-	position: relative;
-	background: #e7dfdd;
-	border-radius: 1px;
-	padding: 5px;
-  box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
-  transform: skewX(20deg);
-}
-
-.skill-bar .bar-fill {  
-  float: left;
-  height: 100%;
-  border-radius: 1px;
-  background-color: #4483CE;
-  box-shadow: 
-    inset 0 2px 9px  rgba(255,255,255,0.3),
-    inset 0 -2px 6px rgba(0,0,0,0.4);
-  box-shadow: 1px 2px rgba(81, 216, 250, 0.3);
-  position: relative;
-  overflow: hidden;  
-  transition: all 600ms ease-in-out;
-}
-
-.skill-bar .bar-label{ 
-  display: none;
-  position: relative;  
-  float: right;
-  margin: -3px 5px;
-  height: 100%;
-  transform: skewX(-20deg);
-  color: #FBCD00;
-  font-size: 18px;
+  height: 2px;
+  margin: 0 auto -80px auto;
+  background-color: #A33ACB;
 }
