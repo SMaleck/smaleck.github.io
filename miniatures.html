@@ -10,14 +10,14 @@
     <!-- SCRIPTS -->
     <script src="./lib/vue.min.js"></script>
     <script src="./js/craftingProjects.js?v5"></script>
-    <script src="./js/miniatures.js?v5"></script>
+    <script src="./js/miniatures.js?v6"></script>
 
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
 
     <!-- STYLES -->
     <link href="./css/style.css?v3" rel="stylesheet" type="text/css">
-    <link href="./css/miniatures.css?v5" rel="stylesheet" type="text/css">
+    <link href="./css/miniatures.css?v6" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -68,9 +68,9 @@
 
                         <!-- ENTRY IMAGES -->
                         <div class="miniature-images-block">
-                            <div v-for="imgSrc in miniature.images" class="miniature-image-container">
+                            <div v-for="(imgSrc, index) in miniature.images" class="miniature-image-container">
                                 <div class="miniature-image card-1">
-                                    <a :href="imgSrc">
+                                    <a :href="imgSrc" @click.prevent="openLightbox(miniature.images, index)">
                                         <img :src="imgSrc" class="lazy-img" loading="lazy" decoding="async" @load="onImgLoad" @error="onImgLoad">
                                     </a>
                                 </div>
@@ -86,6 +86,21 @@
             </div>
 
         </div> <!-- END Content Wrapper  -->
+
+        <!-- LIGHTBOX -->
+        <div v-if="lightbox.open" class="lightbox" @click.self="closeLightbox">
+            <button class="lightbox-close" @click="closeLightbox" aria-label="Close">&times;</button>
+
+            <button v-if="lightboxHasMultiple" class="lightbox-nav lightbox-prev" @click="lightboxPrev" aria-label="Previous">&#8249;</button>
+
+            <div class="lightbox-stage" @click.self="closeLightbox">
+                <img :src="lightboxSrc" class="lightbox-image">
+            </div>
+
+            <button v-if="lightboxHasMultiple" class="lightbox-nav lightbox-next" @click="lightboxNext" aria-label="Next">&#8250;</button>
+
+            <div v-if="lightboxHasMultiple" class="lightbox-counter">{{ lightbox.index + 1 }} / {{ lightbox.images.length }}</div>
+        </div>
     </div> <!-- END Vue App -->
 </body>
 

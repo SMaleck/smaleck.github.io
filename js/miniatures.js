@@ -24,11 +24,22 @@
                 currentCategory: currentCategory,
                 collection: sortedCollection,
                 visibleCount: itemsPerBatch,
-                totalItems: totalItems
+                totalItems: totalItems,
+                lightbox: {
+                    open: false,
+                    images: [],
+                    index: 0
+                }
             },
             computed: {
                 hasMore() {
                     return this.visibleCount < this.totalItems;
+                },
+                lightboxSrc() {
+                    return this.lightbox.images[this.lightbox.index] || '';
+                },
+                lightboxHasMultiple() {
+                    return this.lightbox.images.length > 1;
                 }
             },
             methods: {
@@ -51,6 +62,24 @@
                     if (container) {
                         container.classList.add('is-loaded');
                     }
+                },
+                openLightbox(images, index) {
+                    this.lightbox.images = images;
+                    this.lightbox.index = index;
+                    this.lightbox.open = true;
+                    document.body.classList.add('lightbox-open');
+                },
+                closeLightbox() {
+                    this.lightbox.open = false;
+                    document.body.classList.remove('lightbox-open');
+                },
+                lightboxNext() {
+                    const count = this.lightbox.images.length;
+                    this.lightbox.index = (this.lightbox.index + 1) % count;
+                },
+                lightboxPrev() {
+                    const count = this.lightbox.images.length;
+                    this.lightbox.index = (this.lightbox.index - 1 + count) % count;
                 }
             },
             mounted() {
@@ -68,6 +97,19 @@
                 }, { rootMargin: '400px' });
 
                 observer.observe(sentinel);
+
+                document.addEventListener('keydown', (event) => {
+                    if (!this.lightbox.open) {
+                        return;
+                    }
+                    if (event.key === 'Escape') {
+                        this.closeLightbox();
+                    } else if (event.key === 'ArrowRight' && this.lightboxHasMultiple) {
+                        this.lightboxNext();
+                    } else if (event.key === 'ArrowLeft' && this.lightboxHasMultiple) {
+                        this.lightboxPrev();
+                    }
+                });
             }
         });
     }
