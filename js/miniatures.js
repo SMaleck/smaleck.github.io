@@ -41,6 +41,16 @@
                     if (this.hasMore) {
                         this.visibleCount += itemsPerBatch;
                     }
+                },
+                // Fires when a lazy image finishes loading (or errors). Marks the
+                // container as loaded so the placeholder shimmer stops and the
+                // image fades in.
+                onImgLoad(event) {
+                    event.target.classList.add('is-loaded');
+                    const container = event.target.closest('.miniature-image');
+                    if (container) {
+                        container.classList.add('is-loaded');
+                    }
                 }
             },
             mounted() {

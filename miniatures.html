@@ -10,14 +10,14 @@
     <!-- SCRIPTS -->
     <script src="./lib/vue.min.js"></script>
     <script src="./js/craftingProjects.js?v5"></script>
-    <script src="./js/miniatures.js?v4"></script>
+    <script src="./js/miniatures.js?v5"></script>
 
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
 
     <!-- STYLES -->
     <link href="./css/style.css?v3" rel="stylesheet" type="text/css">
-    <link href="./css/miniatures.css?v4" rel="stylesheet" type="text/css">
+    <link href="./css/miniatures.css?v5" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -71,7 +71,7 @@
                             <div v-for="imgSrc in miniature.images" class="miniature-image-container">
                                 <div class="miniature-image card-1">
                                     <a :href="imgSrc">
-                                        <img :src="imgSrc">
+                                        <img :src="imgSrc" class="lazy-img" loading="lazy" decoding="async" @load="onImgLoad" @error="onImgLoad">
                                     </a>
                                 </div>
                             </div>

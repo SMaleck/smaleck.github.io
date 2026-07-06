@@ -95,11 +95,44 @@
 .miniature-entry .miniature-images-block .miniature-image{
   width: 100%;
   margin: 0px 0px 10px 0px;
+  position: relative;
+  min-height: 320px;
+  background-color: #0E0A19;
+  background-image: linear-gradient(
+    100deg,
+    rgba(14, 10, 25, 0) 30%,
+    rgba(163, 58, 203, 0.15) 50%,
+    rgba(14, 10, 25, 0) 70%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: miniature-shimmer 1.4s ease-in-out infinite;
+}
+
+/* Once the image has loaded, drop the placeholder space and shimmer. */
+.miniature-entry .miniature-images-block .miniature-image.is-loaded{
+  min-height: 0;
+  background-image: none;
+  animation: none;
+}
+
+@keyframes miniature-shimmer{
+  0%   { background-position: 150% 0; }
+  100% { background-position: -50% 0; }
 }
 
 .miniature-entry .miniature-images-block .miniature-image img{
   width: 100%;
   vertical-align: top;
+}
+
+.miniature-entry .miniature-images-block .miniature-image img.lazy-img{
+  opacity: 0;
+  transition: opacity 400ms ease-in;
+}
+
+.miniature-entry .miniature-images-block .miniature-image img.lazy-img.is-loaded{
+  opacity: 1;
 }
 
 .miniature-entry .miniature-images-block .miniature-image:last-child{
