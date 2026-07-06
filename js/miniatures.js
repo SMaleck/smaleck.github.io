@@ -7,19 +7,58 @@
     // }]
     //
     const craftingData = JSON.parse(craftingProjectsJson);
+    const itemsPerBatch = 5;
 
     function initVue() {
         const currentCategory = getCategory();
         const currentCollection = getCurrentCollection(currentCategory);
         const sortedCollection = sortByDate(currentCollection);
 
+        const totalItems = sortedCollection
+            .reduce((sum, category) => sum + category.items.length, 0);
+
         new Vue({
             el: '#app',
             data: {
                 craftingData: craftingData,
                 currentCategory: currentCategory,
-                collection: sortedCollection
+                collection: sortedCollection,
+                visibleCount: itemsPerBatch,
+                totalItems: totalItems
             },
+            computed: {
+                hasMore() {
+                    return this.visibleCount < this.totalItems;
+                }
+            },
+            methods: {
+                // Returns the currently revealed slice of a category's items.
+                // Referencing visibleCount here makes the render reactive to it.
+                visibleItems(items) {
+                    return items.slice(0, this.visibleCount);
+                },
+                loadMore() {
+                    if (this.hasMore) {
+                        this.visibleCount += itemsPerBatch;
+                    }
+                }
+            },
+            mounted() {
+                const sentinel = this.$refs.sentinel;
+                if (!sentinel || !('IntersectionObserver' in window)) {
+                    // Fallback: reveal everything if observers aren't supported.
+                    this.visibleCount = this.totalItems;
+                    return;
+                }
+
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries.some(entry => entry.isIntersecting)) {
+                        this.loadMore();
+                    }
+                }, { rootMargin: '400px' });
+
+                observer.observe(sentinel);
+            }
         });
     }
 

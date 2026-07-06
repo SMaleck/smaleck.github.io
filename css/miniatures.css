@@ -20,6 +20,13 @@
   padding-top: 65px;
 }
 
+.scroll-sentinel{
+  text-align: center;
+  color: #A33ACB;
+  font-size: 14px;
+  padding: 30px 0px;
+}
+
 /* -------------------- MATERIAL -------------------- */
 .card-1 {
   display: block;

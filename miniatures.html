@@ -10,14 +10,14 @@
     <!-- SCRIPTS -->
     <script src="./lib/vue.min.js"></script>
     <script src="./js/craftingProjects.js?v5"></script>
-    <script src="./js/miniatures.js?v3"></script>
+    <script src="./js/miniatures.js?v4"></script>
 
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
 
     <!-- STYLES -->
     <link href="./css/style.css?v3" rel="stylesheet" type="text/css">
-    <link href="./css/miniatures.css?v3" rel="stylesheet" type="text/css">
+    <link href="./css/miniatures.css?v4" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -58,7 +58,7 @@
                     </h2>
                     
                     <!-- ENTRY -->
-                    <div v-for="miniature in category.items" class="miniature-entry">
+                    <div v-for="miniature in visibleItems(category.items)" class="miniature-entry">
                         <div class="miniature-details-block">
                             <div class="miniature-title">
                                 <a :id="category.category + '-' + miniature.name" :href="'#' + category.category + '-' + miniature.name">{{miniature.name}}</a>
@@ -79,6 +79,11 @@
                     </div>
                 </div>
             </div> <!-- END CATEGORY  -->
+
+            <!-- INFINITE SCROLL SENTINEL -->
+            <div ref="sentinel" v-show="hasMore" class="scroll-sentinel">
+                Loading more…
+            </div>
 
         </div> <!-- END Content Wrapper  -->
     </div> <!-- END Vue App -->
