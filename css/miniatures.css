@@ -6,18 +6,27 @@
   text-transform: capitalize;
 }
 
-.miniatures-category h2{
-  margin: 0;
-  padding: 0;
-  box-shadow: 0 0;
-  border-bottom: 2px solid #A33ACB;
-  text-shadow: 1px 1px #A33ACB;
-  text-indent: 0px;
-  font-size: 32px;
-}
-
 .container.content{
   padding-top: 65px;
+}
+
+/* -------------------- NAVBAR (scoped) -------------------- */
+/* Keep the fixed navbars above positioned page content (e.g. .miniature-image,
+   which is position:relative for the lazy-load shimmer) and the sticky title. */
+.navbar{
+  z-index: 20;
+}
+
+/* "You are here" — active page in the main navbar. */
+.navbar-main .selected{
+  color: #FBCD00;
+  text-decoration-line: none;
+}
+
+/* "You are here" — active category filter in the page navbar. */
+.navbar-page .menu-bar-button a.selected{
+  color: #FBCD00;
+  text-shadow: 1px 1px #A33ACB;
 }
 
 .scroll-sentinel{
@@ -41,26 +50,54 @@
 
 /* -------------------- ITEMS -------------------- */
 .miniature-entry{
-  padding: 30px 0px; 
+  padding: 0;
   max-width: 500px;
-  margin: auto;
+  margin: 0 auto 30px auto;
+  background: #0E0A19;
+  border: 1px solid rgba(68, 131, 206, 0.25);
+  border-top: 2px solid #4483CE;
+  box-shadow: 0 3px 6px rgba(71, 23, 246, 0.16), 0 3px 6px rgba(71, 23, 246, 0.23);
+  transition: box-shadow 300ms cubic-bezier(.25,.8,.25,1), transform 300ms cubic-bezier(.25,.8,.25,1);
 }
 
+.miniature-entry:hover{
+  box-shadow: 0 10px 20px rgba(163, 58, 203, 0.25), 0 6px 6px rgba(163, 58, 203, 0.22);
+  transform: translateY(-2px);
+}
+
+/* Header text is inset; images below go full-bleed to the card edges. */
 .miniature-entry .miniature-details-block{
-  padding: 0px 0px 15px 0px;
+  padding: 15px 15px 12px 15px;
+  margin: 0px;
+  border-bottom: 1px solid rgba(68, 131, 206, 0.2);
 }
 
 .miniature-entry .miniature-details-block .miniature-title{
+  padding: 0px 0px 6px 0px;
+}
+
+.miniature-entry .miniature-details-block .miniature-title a{
+  display: inline-block;
   color: #efefef;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
-  padding: 0px 0px 5px 0px;
+  font-variant: small-caps;
+  letter-spacing: 0.5px;
+  border-left: 3px solid #A33ACB;
+  padding-left: 10px;
+}
+
+.miniature-entry .miniature-details-block .miniature-title a:hover{
+  color: #FBCD00;
+  text-shadow: 1px 1px #A33ACB;
 }
 
 .miniature-entry .miniature-details-block .miniature-created-at{
   color: #A33ACB;
-  font-size: 14px;
-  padding: 0px 0px 5px 0px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0px 0px 0px 13px;
 }
 
 .miniature-entry .miniature-details-block .miniature-description{
@@ -73,7 +110,8 @@
 }
 
 .miniature-entry .miniature-images-block{
-  width: 100%
+  width: 100%;
+  padding-top: 15px;
 }
 
 .miniature-entry .miniature-images-block a{

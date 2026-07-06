@@ -38,10 +38,10 @@
         <div class="navbar navbar-page">
             <div class="inner">
                 <div class="menu-bar-button">
-                    <a href="?">ALL</a>
+                    <a href="?" :class="{ selected: !currentCategory }">All</a>
                 </div>
                 <div v-for="category in craftingData" class="menu-bar-button">
-                    <a :href="'?category=' + category.category">{{category.category}}</a>
+                    <a :href="'?category=' + category.category" :class="{ selected: currentCategory === category.category }">{{category.category}}</a>
                 </div>
             </div>
         </div>
@@ -53,9 +53,6 @@
             <div v-for="category in collection" class="miniatures-category">
                 
                 <div class="content-block">
-                    <h2 class="category-title">
-                        <a :id="category.category" :href="'#' + category.category">{{category.category}}</a>
-                    </h2>
                     
                     <!-- ENTRY -->
                     <div v-for="miniature in visibleItems(category.items)" class="miniature-entry">
